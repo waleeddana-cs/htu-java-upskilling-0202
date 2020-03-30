@@ -1,6 +1,7 @@
 package jo.edu.htu.upskiling;
 
 public class Calculator<OPERAND> {
+
     private final OperationsFactory<OPERAND> operationsFactory;
 
     public Calculator(OperationsFactory<OPERAND> operationsFactory) {
@@ -8,6 +9,8 @@ public class Calculator<OPERAND> {
     }
 
     public OPERAND sum(OPERAND first, OPERAND second) {
+//        return operationsFactory.summation().execute(first,second);
+
         return null;
     }
 

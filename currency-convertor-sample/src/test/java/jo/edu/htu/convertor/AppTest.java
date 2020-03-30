@@ -26,7 +26,8 @@ public class AppTest {
         //CurrencyConvertorApp app = new CurrencyConvertorApp(rateSupplier, truePredicate);
         //CurrencyConvertorApp app = new CurrencyConvertorApp((f, t) -> rateToUse, c -> true);
         //CurrencyConvertorApp app = new CurrencyConvertorApp((f, t) -> rateToUse, CodePredicate.ALWAYS_TRUE);
-        CurrencyConvertorApp app = new CurrencyConvertorApp((f, t) -> rateToUse, CodePredicate.alwaysTrue());
+        CurrencyConvertorApp app = new CurrencyConvertorApp
+                ((f, t) -> rateToUse, CodePredicate.alwaysTrue());
         app.run();
     }
 

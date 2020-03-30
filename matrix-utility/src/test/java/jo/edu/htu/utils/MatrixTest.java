@@ -78,6 +78,6 @@ public class MatrixTest {
             consumed[r][c] = v;
         });
         Assertions.assertArrayEquals(array, consumed, "it seems not all cells were visited");
-
     }
 }
+

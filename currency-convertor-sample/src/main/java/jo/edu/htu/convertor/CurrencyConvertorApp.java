@@ -22,7 +22,7 @@ public class CurrencyConvertorApp {
     private RateSupplier rateSupplier;
     private CodePredicate codePredicate;
 
-    public CurrencyConvertorApp(RateSupplier rateSupplier, CodePredicate codePredicate) {
+    public CurrencyConvertorApp (RateSupplier rateSupplier, CodePredicate codePredicate) {
         this.rateSupplier = rateSupplier;
         this.codePredicate = codePredicate;
     }
