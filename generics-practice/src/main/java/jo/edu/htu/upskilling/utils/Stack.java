@@ -15,7 +15,6 @@ public class Stack<ELEMENT> {
             throw new IllegalArgumentException("negative size");
         array = new Object[capacity];
 
-
     }
 
     public int capacity() {
@@ -27,9 +26,8 @@ public class Stack<ELEMENT> {
     }
 
     public ELEMENT pop() {
-        if (array.length == 0)
+        if (array.length == 0 | array.length == 0)
             throw new IllegalStateException("stack is empty");
-
         if (pointer == 0)
             throw new IllegalStateException("stack is empty");
         pointer--;
@@ -50,7 +48,7 @@ public class Stack<ELEMENT> {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        Stack<?> stack = (Stack<?>) o;
+        Stack<ELEMENT> stack = (Stack<ELEMENT>) o;
         return pointer == stack.pointer &&
                 isEqual(array, stack.array);
     }
@@ -65,19 +63,8 @@ public class Stack<ELEMENT> {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(pointer);
-        result = 31 * result + Arrays.hashCode(array);
-        return result;
+        return Objects.hash(array[pointer]);
     }
-    public int hashCode(Object[] element1) {
-        for (int i = 0; i < pointer; i++) {
-            Object hashTemp= element1[i];
-            return hashTemp.hashCode();
-        }
-        return hashCode();
-    }
-   
-
 
 
 }

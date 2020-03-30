@@ -13,15 +13,11 @@ public class Matrix {
                 throw new IllegalArgumentException("Inconsistent rows");
         }
         int[][] matrixArray = new int[matrix.length][];
-        for (int row = 0; row < matrix.length; row++) {
-            for (int col = 0; col < matrix[0].length; col++) {
-                matrixArray[row] = matrix[row].clone();
-                matrix = matrixArray;
-                row = matrix.length;
-                col = matrix[0].length;
-
-            }
-        }
+        for (int i = 0; i < matrix.length; i++)
+            matrixArray[i] = matrix[i].clone();
+        this.matrix = matrixArray;
+        this.row = matrix.length;
+        this.col = matrix[0].length;
 
     }
 
@@ -34,8 +30,15 @@ public class Matrix {
     }
 
     public int value(int row, int col) {
-        if (row > matrix.length - 1) {
-            throw new IllegalArgumentException("Invalid Index : " + row + "," + col);
+        for (int i = 0; i < matrix.length; i++) {
+
+
+            if (row > matrix.length) {
+                throw new IllegalArgumentException("invalid cell Index: " + row + "," + col);
+            }
+            if (col > matrix[i].length - 1) {
+                throw new IllegalArgumentException("invalid cell index: " + row + "," + col);
+            }
         }
         return matrix[row][col];
     }
@@ -44,7 +47,6 @@ public class Matrix {
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix[0].length; col++) {
                 valueConsumer.accept(row, col, value(row, col));
-
 
             }
 
