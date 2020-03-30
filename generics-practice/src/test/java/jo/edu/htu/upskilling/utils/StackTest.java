@@ -25,8 +25,8 @@ public class StackTest {
     public void givenStackWithZeroSize_whenConstructingStack_thenStackIsAnEmptyStack() {
         Stack<String> stack = new Stack<>(0);
         Assertions.assertEquals(0, stack.capacity());
-//        assertEmptyStack(stack);
-//        assertFullStack(stack);
+        assertEmptyStack(stack);
+        assertFullStack(stack);
     }
 
     @Test

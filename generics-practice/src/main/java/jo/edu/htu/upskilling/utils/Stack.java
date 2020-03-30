@@ -1,20 +1,19 @@
 package jo.edu.htu.upskilling.utils;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Stack<ELEMENT> {
 
     private int capacity;
     private ELEMENT[] arr;
-//    = new <ELEMENT>[capacity];
+    private int counter = 0;
 
     public Stack(int capacity) {
         if (capacity < 0)
             throw new IllegalArgumentException("negative size");
         this.capacity = capacity;
-        if (capacity == 0)
-            pop();
-//            throw new IllegalStateException("stack is empty");
-
-//        arr = new <ELEMENT>[capacity];
+        arr = (ELEMENT[]) new Object[capacity];
     }
 
     public int capacity() {
@@ -22,17 +21,34 @@ public class Stack<ELEMENT> {
     }
 
     public int count() {
-        return -1;
+        return counter;
     }
 
     public ELEMENT pop() {
-        if (capacity == 0)
+        if (counter == 0)
             throw new IllegalStateException("stack is empty");
-        return null;
+        return arr[--counter];
     }
 
     public void push(ELEMENT element) {
+        if (counter >= capacity)
+            throw new IllegalStateException("stack is full");
+        arr[counter++] = element;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Stack<?> stack = (Stack<?>) o;
+        if (counter != stack.counter) return false;
+        for (int i = 0; i < counter; i++)
+            if (arr[i] != stack.arr[i]) return false;
+        return true;
+    }
 
+    @Override
+    public int hashCode() {
+        return 31 * counter + 37;
     }
 }
