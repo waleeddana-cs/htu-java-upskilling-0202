@@ -1,6 +1,7 @@
 package jo.edu.htu.upskilling.utils;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Stack<ELEMENT> implements Iterable<ELEMENT>  {
 
