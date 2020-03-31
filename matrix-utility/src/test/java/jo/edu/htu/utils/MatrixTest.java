@@ -40,6 +40,7 @@ public class MatrixTest {
                 "the exception message is not as expected");
     }
 
+
     @Test
     public void givenAValidArrayWhenConstructing_thenMatrixInstanceIsCreated() {
         int[][] array = {
@@ -51,13 +52,12 @@ public class MatrixTest {
         Matrix matrix = new Matrix(array);
 
         Assertions.assertEquals(array.length, matrix.rows(), "invalid rows count");
-        Assertions.assertEquals(array[0].length, matrix.cols(), "invalid rows count");
+        Assertions.assertEquals(array[0].length, matrix.cols(), "invalid Cols count");
         Random random = new Random();
         int invalidRow = array.length + random.nextInt(3);
         int invalidCol = array[0].length + random.nextInt(array[0].length);
         IllegalArgumentException
-                thrown = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> matrix.value(invalidRow, invalidCol));
+                thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> matrix.value(invalidRow, invalidCol));
         Assertions.assertEquals("invalid cell index: " + invalidRow + "," + invalidCol, thrown.getMessage());
 
         for (int row = 0; row < array.length; row++) {
