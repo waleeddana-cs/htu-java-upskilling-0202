@@ -5,40 +5,49 @@ import java.util.Objects;
 
 public class Stack<ELEMENT> {
     ArrayList<ELEMENT> stackList = new ArrayList<>();
+    ELEMENT[] myStackList;
     int stackCapacity;
+    int stackSize = 0;
 
     public Stack(int capacity) {
+
         if (capacity < 0) {
             throw new IllegalArgumentException("negative size");
         }
-        stackList.ensureCapacity(capacity);
+        myStackList = (ELEMENT[]) new Object[capacity];
+        //stackList.ensureCapacity(capacity);
         stackCapacity = capacity;
     }
 
     public int capacity() {
+
         return stackCapacity;
     }
 
     public int count() {
-        return stackList.size();
+        return stackSize;
+        //return stackList.size();
     }
 
     public ELEMENT pop() {
-        if (stackList.size() == 0) {
+
+        if (stackSize == 0) {
             throw new IllegalStateException("stack is empty");
         }
-
-
-        ELEMENT peak = stackList.remove(stackList.size() - 1);
+        ELEMENT peak = myStackList[stackSize - 1];
+        System.out.println(peak);
+        myStackList[stackSize - 1] = null;
+        stackSize -= 1;
         return peak;
 
     }
 
     public void push(ELEMENT element) {
-        if (stackCapacity == (stackList.size())) {
+        if (stackCapacity == stackSize) {
             throw new IllegalStateException("stack is full");
         }
-        stackList.add(element);
+        myStackList[stackSize] = element;
+        stackSize += 1;
     }
 
     @Override
@@ -47,12 +56,11 @@ public class Stack<ELEMENT> {
         if (newStack == null) {
             return false;
         }
+        if (this.stackSize == newStack.stackSize) {
+            for (int i = 0; i < this.stackSize; i++) {
+                System.out.println("second "+newStack.myStackList[i]+" first stack :"+this.myStackList[i]);
 
-        System.out.println( (this.stackList.size() == newStack.stackList.size()));
-
-        if (this.stackList.size() == newStack.stackList.size()) {
-            for (int i = 0; i < stackList.size(); i++) {
-                if (stackList.get(i) == newStack.stackList.get(i)) {
+                if (this.myStackList[i] == newStack.myStackList[i]) {
                     continue;
                 } else {
                     return false;
