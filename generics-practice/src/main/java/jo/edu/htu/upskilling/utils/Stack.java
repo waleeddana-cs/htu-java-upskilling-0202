@@ -1,40 +1,81 @@
 package jo.edu.htu.upskilling.utils;
 
 
-public class Stack<ELEMENT> {
-    private int cap;
-    int count;
-    int x = 0;
-    ELEMENT array[] ;
+import java.util.ArrayList;
+import java.util.Objects;
 
+public class Stack<ELEMENT> {
+    ArrayList<ELEMENT> stackList = new ArrayList<>();
+    ELEMENT[] myStackList;
+    int stackCapacity;
+    int stackSize = 0;
 
     public Stack(int capacity) {
-        if (capacity < 0)
+
+        if (capacity < 0) {
             throw new IllegalArgumentException("negative size");
-        this.cap = capacity;
+        }
+        myStackList = (ELEMENT[]) new Object[capacity];
+        //stackList.ensureCapacity(capacity);
+        stackCapacity = capacity;
     }
 
     public int capacity() {
 
-        return array.length ;
+        return stackCapacity;
     }
 
     public int count() {
-        return -1;
+        return stackSize;
+        //return stackList.size();
     }
 
     public ELEMENT pop() {
-        if (cap == 0)
+
+        if (stackSize == 0) {
             throw new IllegalStateException("stack is empty");
-        return (ELEMENT) array;
+        }
+        ELEMENT peak = myStackList[stackSize - 1];
+        System.out.println(peak);
+        myStackList[stackSize - 1] = null;
+        stackSize -= 1;
+        return peak;
+
     }
 
     public void push(ELEMENT element) {
-        if (cap == array.length)
+        if (stackCapacity == stackSize) {
             throw new IllegalStateException("stack is full");
-        array[x] = element;
-        count += 1;
-        x += 1;
-
+        }
+        myStackList[stackSize] = element;
+        stackSize += 1;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Stack newStack = (Stack) o;
+        if (newStack == null) {
+            return false;
+        }
+        if (this.stackSize == newStack.stackSize) {
+            for (int i = 0; i < this.stackSize; i++) {
+                System.out.println("second "+newStack.myStackList[i]+" first stack :"+this.myStackList[i]);
+
+                if (this.myStackList[i] == newStack.myStackList[i]) {
+                    continue;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stackList);
+    }
+
 }

@@ -3,6 +3,7 @@ package jo.edu.htu.upskiling;
 public class Calculator<OPERAND> {
     private final OperationsFactory<OPERAND> operationsFactory;
 
+
     public Calculator(OperationsFactory<OPERAND> operationsFactory) {
         this.operationsFactory = operationsFactory;
     }

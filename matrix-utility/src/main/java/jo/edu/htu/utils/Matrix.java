@@ -13,38 +13,46 @@ public class Matrix {
             if (matrix[row].length != matrix[0].length)
                 throw new IllegalArgumentException("Inconsistent rows");
         }
-        this.matrix = matrix;
+        this.matrix = new int[matrix.length][matrix[0].length];
+        setMyMatrix(matrix);
 
+    }
 
+    private void setMyMatrix(int[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                this.matrix[row][col] = matrix[row][col];
+            }
+        }
     }
 
     public int rows() {
-
-        return matrix.length;
-
+        return this.matrix.length;
     }
 
     public int cols() {
-        return matrix[0].length;
-
+        return this.matrix[0].length;
     }
-
 
     public int value(int row, int col) {
-        if (row>matrix.length)
+
+        if ((row < 0 || row >= this.matrix.length) || (col < 0 || col >= this.matrix[0].length)) {
             throw new IllegalArgumentException("invalid cell index: " + row + "," + col);
-        return matrix[row][col];
+        }
+        return this.matrix[row][col];
     }
 
-
     public void forEach(ValueConsumer valueConsumer) {
-        for (int row=0;row<matrix.length;row++)
-            for (int col = 0; col <matrix[row].length ; col++) {
-                valueConsumer.accept(row,col,value(row,col));
-            }}
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                valueConsumer.accept(row, col, matrix[row][col]);
+            }
+        }
+    }
 
     public interface ValueConsumer {
 
         void accept(int row, int col, int value);
     }
 }
+
