@@ -20,16 +20,7 @@ public class IntegerOperationsFactory implements OperationsFactory<Integer> {
 
     @Override
     public Operation<Integer> division() {
-        return new division();
+        return (first, second) -> first / second;
     }
 
-    class division implements Operation<Integer> {
-        @Override
-        public Integer execute(Integer first, Integer second) {
-            if (second == 0) {
-                throw new IllegalArgumentException("Division by 0");
-            }
-            return first / second;
-        }
-    }
 }
