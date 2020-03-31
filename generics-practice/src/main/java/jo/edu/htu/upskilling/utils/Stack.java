@@ -58,7 +58,7 @@ public class Stack<ELEMENT> {
 
     private boolean checkEqual(Object[] element1, Object[] element2) {
         for (int i = 0; i < pointer; i++) {
-            if (element1[i] != element2[i])
+            if (!element1[i].equals(element2[i]))
                 return false;
         }
         return true;
