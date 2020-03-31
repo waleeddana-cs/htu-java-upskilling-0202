@@ -3,8 +3,9 @@ package jo.edu.htu.upskilling.utils;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Iterator;
 
-public class Stack<ELEMENT> {
+public class Stack<ELEMENT> implements Iterable<ELEMENT> {
     ArrayList<ELEMENT> stackList = new ArrayList<>();
     ELEMENT[] myStackList;
     int stackCapacity;
@@ -74,6 +75,11 @@ public class Stack<ELEMENT> {
     @Override
     public int hashCode() {
         return Objects.hash(stackList);
+    }
+
+    @Override
+    public Iterator<ELEMENT> iterator() {
+        return null;
     }
 
 }
