@@ -16,7 +16,6 @@ public class Stack<ELEMENT> {
             throw new IllegalArgumentException("negative size");
         }
         myStackList = (ELEMENT[]) new Object[capacity];
-        //stackList.ensureCapacity(capacity);
         stackCapacity = capacity;
     }
 
@@ -27,7 +26,6 @@ public class Stack<ELEMENT> {
 
     public int count() {
         return stackSize;
-        //return stackList.size();
     }
 
     public ELEMENT pop() {
