@@ -1,6 +1,7 @@
 package jo.edu.htu.upskiling;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Proxy;
@@ -9,6 +10,7 @@ import java.util.Random;
 public class CalculatorTest {
 
     @Test
+    @RepeatedTest(6)
     public void givenCalculatorWithIntFactory_whenDoCalculations_thenWorkAsExpected() {
         OperationsFactory<Integer> operationsFactory = new IntegerOperationsFactory();
         Operation<Integer> summation = operationsFactory.summation();
@@ -32,6 +34,7 @@ public class CalculatorTest {
 
         int first = new Random().nextInt(20);
         int second = new Random().nextInt(20);
+        System.out.println("first :"+first+" Second : "+second);
         Assertions.assertEquals(first + second, calculator.sum(first, second), "summation result is incorrect");
         Assertions.assertEquals(first - second, calculator.subtract(first, second), "subtraction result is incorrect");
         Assertions.assertEquals(first * second, calculator.multiply(first, second), "summation result is incorrect");
