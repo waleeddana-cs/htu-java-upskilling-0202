@@ -1,4 +1,5 @@
 package jo.edu.htu.upskilling.utils;
+import java.util.Iterator;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -6,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Stack<ELEMENT> {
+public class Stack<ELEMENT> implements Iterable<ELEMENT> {
     Object[] array;
     int pointer;
 
@@ -66,6 +67,8 @@ public class Stack<ELEMENT> {
         return Objects.hash(array[pointer]);
     }
 
-
+    @Override
+    public Iterator<ELEMENT> iterator() {
+        return null;
+    }
 }
-
