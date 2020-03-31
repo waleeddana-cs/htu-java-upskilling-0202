@@ -1,8 +1,8 @@
 package jo.edu.htu.upskilling.utils;
 
-import java.util.Objects;
+import java.util.Iterator;
 
-public class Stack<ELEMENT> {
+public class Stack<ELEMENT> implements Iterable<ELEMENT>  {
 
     Object[] array;
     int pointer;
@@ -78,5 +78,10 @@ public class Stack<ELEMENT> {
 
             return var1;
         }
+    }
+
+    @Override
+    public Iterator<ELEMENT> iterator() {
+        return null;
     }
 }
