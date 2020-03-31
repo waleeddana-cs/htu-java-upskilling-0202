@@ -1,6 +1,7 @@
 package jo.edu.htu.utils;
 
 
+
 public class Matrix {
 
     private int[][] matrix;
@@ -30,19 +31,17 @@ public class Matrix {
 
 
     public int value(int row, int col) {
-        if (row < 0 || row > matrix.length || col < 0 || col > matrix.length)
+        if (row>matrix.length)
             throw new IllegalArgumentException("invalid cell index: " + row + "," + col);
-
-        return this.matrix[row][col];
+        return matrix[row][col];
     }
 
 
     public void forEach(ValueConsumer valueConsumer) {
-        for (int i = 0; i < matrix.length; i++)
-            for (int j = 0; j < matrix[i].length; j++)
-                valueConsumer.accept(i,j,matrix[i][j]);
-
-    }
+        for (int row=0;row<matrix.length;row++)
+            for (int col = 0; col <matrix[row].length ; col++) {
+                valueConsumer.accept(row,col,value(row,col));
+            }}
 
     public interface ValueConsumer {
 
