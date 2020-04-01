@@ -33,7 +33,9 @@ public class Matrix {
     }
 
     public void forEach(ValueConsumer valueConsumer) {
-
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 0; j < matrix[0].length; j++)
+                valueConsumer.accept(i, j, matrix[i][j]);
     }
 
     public interface ValueConsumer {
