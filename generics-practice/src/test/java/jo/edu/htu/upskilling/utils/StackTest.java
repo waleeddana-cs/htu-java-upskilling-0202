@@ -100,7 +100,7 @@ public class StackTest {
 
         Iterator<String> iterator = stack.iterator();
         Assertions.assertNotNull(iterator, "returned iterator is null");
-        String[] expected = {"four", "three", "two", "one"};
+        String[] expected = {"one", "two", "three", "four"};
         int index = 0;
         for (String value : stack) {
             Assertions.assertEquals(expected[index++], value, "iterator didn't return the expected value");

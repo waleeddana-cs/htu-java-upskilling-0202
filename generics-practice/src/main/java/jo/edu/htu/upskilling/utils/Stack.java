@@ -58,7 +58,7 @@ public class Stack<ELEMENT> implements Iterable<ELEMENT> {
         }
         if (this.stackSize == newStack.stackSize) {
             for (int i = 0; i < this.stackSize; i++) {
-                System.out.println("second "+newStack.myStackList[i]+" first stack :"+this.myStackList[i]);
+                System.out.println("second " + newStack.myStackList[i] + " first stack :" + this.myStackList[i]);
 
                 if (this.myStackList[i] == newStack.myStackList[i]) {
                     continue;
@@ -79,7 +79,28 @@ public class Stack<ELEMENT> implements Iterable<ELEMENT> {
 
     @Override
     public Iterator<ELEMENT> iterator() {
-        return null;
+        Iterator<ELEMENT> it = new Iterator<ELEMENT>() {
+            private int currentIndex = 0;
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < stackCapacity && myStackList[currentIndex] != null;
+        }
+
+        @Override
+        public ELEMENT next() {
+            return myStackList[currentIndex++];
+        }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return it;
     }
 
+
 }
+
+
