@@ -3,10 +3,11 @@ package jo.edu.htu.upskilling.utils;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Stack<ELEMENT> implements Iterable<ELEMENT>  {
+public class Stack<ELEMENT> implements Iterable<ELEMENT> {
 
     Object[] array;
     int pointer;
+    int cursor;
 
     public Stack(int capacity) {
         if (capacity < 0)
@@ -83,6 +84,19 @@ public class Stack<ELEMENT> implements Iterable<ELEMENT>  {
 
     @Override
     public Iterator<ELEMENT> iterator() {
-        return null;
+        cursor = 1;
+        return new Iterator<ELEMENT>() {
+            @Override
+            public boolean hasNext() {
+                return pointer - cursor >= 0;
+            }
+
+            @Override
+            public ELEMENT next() {
+                ELEMENT temp = (ELEMENT) array[pointer - cursor];
+                cursor++;
+                return temp;
+            }
+        };
     }
 }
