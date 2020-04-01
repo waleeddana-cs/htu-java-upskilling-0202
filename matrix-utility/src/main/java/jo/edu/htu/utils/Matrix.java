@@ -1,6 +1,8 @@
 package jo.edu.htu.utils;
 
 public class Matrix {
+    int[][] mat;
+
     public Matrix(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             if (matrix[row] == null)
@@ -8,23 +10,30 @@ public class Matrix {
             if (matrix[row].length != matrix[0].length)
                 throw new IllegalArgumentException("Inconsistent rows");
         }
+        mat = matrix;
     }
 
     public int rows() {
-        return -1;
+        return mat.length;
     }
 
     public int cols() {
-        return -1;
+        return mat[0].length;
     }
 
     public int value(int row, int col) {
-        return 0;
+        return mat[row][col];
     }
 
     public void forEach(ValueConsumer valueConsumer) {
-
+        for (int[] i : mat) {
+            for (int j : i) {
+                System.out.println(j + " ");
+            }
+            System.out.println();
+        }
     }
+
 
     public interface ValueConsumer {
 
