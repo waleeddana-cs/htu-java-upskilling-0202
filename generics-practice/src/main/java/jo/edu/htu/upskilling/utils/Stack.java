@@ -1,11 +1,12 @@
 package jo.edu.htu.upskilling.utils;
 
+import java.util.Iterator;
+
+
 import java.util.Arrays;
 import java.util.Objects;
-
-public class Stack<ELEMENT> {
-
-    private int capacity;
+public class Stack<ELEMENT> implements Iterable<ELEMENT>  {
+        private int capacity;
     private ELEMENT[] arr;
     private int counter = 0;
 
@@ -50,5 +51,10 @@ public class Stack<ELEMENT> {
     @Override
     public int hashCode() {
         return 31 * counter + 37;
+    }
+
+    @Override
+    public Iterator<ELEMENT> iterator() {
+        return null;
     }
 }
