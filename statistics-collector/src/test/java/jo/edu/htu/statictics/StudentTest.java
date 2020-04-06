@@ -16,6 +16,7 @@ public class StudentTest {
                 .setUniversity("Al-Albayt")
                 .setMajor("Computer information system")
                 .setGender(Gender.MALE);
+
         Student student = builder.build();
         Assertions.assertNotNull(student, "returned employee is null");
         Assertions.assertEquals("u123", student.getId());

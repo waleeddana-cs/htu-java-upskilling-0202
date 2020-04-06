@@ -5,4 +5,5 @@ public interface Statistic extends Comparable<Statistic> {
     String name();
 
     Integer matchedCases();
+
 }
