@@ -1,18 +1,25 @@
 package jo.edu.htu.map.practice;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
+// TODO reimplement this sample in a cleaner way
 public class CharactersCounter {
 
     public Map<Character, Integer> countCharacters(String sentence) {
-
-        Map<Character, Integer> map = new HashMap<>();
+        Comparator<Character> reversed = (c1, c2) -> -1 * c1.compareTo(c2);
+        Map<Character, Integer> result = new TreeMap<>(reversed);
         for (int i = 0; i < sentence.length(); i++) {
-            Character temp = Character.toLowerCase(sentence.charAt(i));
-            if (temp >= 'a' && temp <= 'z')
-                map.put(temp, map.get(temp) != null ? map.get(temp) + 1 : 1);
+            char current = sentence.charAt(i);
+            Character character = Character.toLowerCase(current);
+            if (character >= 'a' && character <= 'z') {
+                //int count = result.containsKey(character) ? result.get(character) : 0;
+                int count = result.getOrDefault(character, 0);
+                result.put(character, count + 1);
+            }
         }
-        return map;
+        return result;
     }
 }
