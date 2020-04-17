@@ -1,6 +1,7 @@
 package jo.edu.htu.utils;
 
 public class Matrix {
+
     int row;
     int col;
     int[][] matrix;
